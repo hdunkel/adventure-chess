@@ -15,10 +15,12 @@ export const tutorialSteps: TutorialStep[] = [
   {
     title: "Rules",
     lines: [
-      "A capture can give a player an Adventure Card.",
-      "At the start, the players do not draw cards.",
-      "After the first capture of a piece that is not a pawn, each capture gives a card.",
+      "The rules for chess apply.",
+      "The first capture of a piece that is not a pawn starts the Adventure Cards.",
+      "After that, each capture gives an Adventure Card. This also applies to pawns.",
       "The player who lost the piece draws the card.",
+      "Read each card out loud. Do the effect immediately, unless the card has a different instruction.",
+      "When a player asks, read a card again and show it to all players.",
       "A player in check can also draw a card as a solution.",
     ],
   },
