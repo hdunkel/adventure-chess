@@ -6,6 +6,7 @@ import { cards, cardsById } from "../data/cards";
 import { createHistory } from "../game/game";
 import { saveHistory } from "../game/storage";
 import type { GameState } from "../game/types";
+import { TUTORIAL_KEY } from "./tutorial";
 
 const rng = () => 0.5;
 
@@ -29,6 +30,7 @@ const bottomHalf = (c: HTMLElement) => c.querySelector('[data-seat="bottom"]') a
 
 beforeEach(() => {
   localStorage.clear();
+  localStorage.setItem(TUTORIAL_KEY, "seen");
   vi.restoreAllMocks();
 });
 

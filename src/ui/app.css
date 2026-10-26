@@ -441,3 +441,158 @@ button:disabled {
 .action-button.menu-button {
   flex: none;
 }
+
+/* The tutorial. The backdrop makes the game darker. The flashed part stays above it. */
+.tour-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: rgba(26, 20, 12, 0.6);
+}
+
+.tour-panel {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid var(--card-edge);
+  border-radius: 14px;
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* A step with a flashed part stays at the top, so the part shows. */
+.tour-top {
+  align-self: flex-start;
+}
+
+.tour-count {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--card-edge);
+}
+
+.tour-title {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.tour-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.tour-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tour-button {
+  flex: 1 1 0;
+  min-height: var(--touch);
+  border: 1px solid var(--wood);
+  border-radius: 10px;
+  background: var(--wood);
+  color: #fff;
+  font-size: 16px;
+}
+
+.tour-button.tour-quiet {
+  background: transparent;
+  color: var(--ink-soft);
+}
+
+.tour-flash {
+  position: relative;
+  z-index: 21;
+  pointer-events: none;
+  border-radius: 10px;
+  animation: tour-pulse 1.2s ease-in-out 3 forwards;
+}
+
+/* A hand row or the "Last" button has no background of its own. */
+.hand-row.tour-flash {
+  min-height: 60px;
+  background: var(--parchment);
+}
+
+/* An empty row shows its name, so the players can see which row it is. */
+.hand-row.tour-flash:empty::before {
+  content: attr(data-empty);
+  margin: auto;
+  color: var(--card-edge);
+  font-size: 14px;
+}
+
+.strip-last.tour-flash {
+  background: var(--wood);
+}
+
+@keyframes tour-pulse {
+  0%,
+  100% {
+    box-shadow: inset 0 0 0 3px #f2c94c, 0 0 0 0 rgba(242, 201, 76, 0.6);
+  }
+  50% {
+    box-shadow: inset 0 0 0 3px #f2c94c, 0 0 16px 6px rgba(242, 201, 76, 0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-flash {
+    animation: none;
+    box-shadow: inset 0 0 0 3px #f2c94c;
+  }
+}
+
+/* The picture of the phone next to the board. */
+.tour-picture {
+  width: 100%;
+  max-height: 170px;
+  margin: 4px 0;
+}
+
+.tour-picture-label {
+  font-size: 11px;
+  fill: var(--ink-soft);
+  text-anchor: middle;
+}
+
+.tour-board-light {
+  fill: var(--parchment);
+}
+
+.tour-board-dark {
+  fill: var(--card-edge);
+}
+
+.tour-board-edge {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.5;
+}
+
+.tour-phone {
+  fill: var(--ink);
+}
+
+.tour-phone-black {
+  fill: var(--parchment-dark);
+}
+
+.tour-phone-strip {
+  fill: var(--card-edge);
+}
+
+.tour-phone-white {
+  fill: var(--parchment);
+}
