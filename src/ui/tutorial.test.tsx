@@ -88,7 +88,7 @@ test("the phone step shows the picture", () => {
 test("the draw step flashes only the bottom draw button", () => {
   const { container } = render(<App rng={rng} />);
   goTo(3);
-  expect(within(step()).getByText("Press this button when your opponent captures your piece.")).toBeInTheDocument();
+  expect(within(step()).getByText("Press this button when your opponent captures one of your pieces.")).toBeInTheDocument();
   const bottom = container.querySelector('[data-seat="bottom"] .draw-button');
   const top = container.querySelector('[data-seat="top"] .draw-button');
   expect(bottom).toHaveClass("tour-flash");

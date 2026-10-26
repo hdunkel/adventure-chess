@@ -15,43 +15,66 @@ export const tutorialSteps: TutorialStep[] = [
   {
     title: "Rules",
     lines: [
-      "A capture causes a draw.",
-      "This starts after the first capture of a piece that is not a pawn.",
-      "The player who lost the piece draws a card.",
+      "A capture can give a player an Adventure Card.",
+      "At the start, the players do not draw cards.",
+      "After the first capture of a piece that is not a pawn, each capture gives a card.",
+      "The player who lost the piece draws the card.",
+      "A player in check can also draw a card as a solution.",
     ],
   },
   {
     title: "Phone",
-    lines: ["Put the phone flat next to the board, in portrait.", "The top of the screen points to Black."],
+    lines: [
+      "Put the phone flat on the table, next to the board.",
+      "Use portrait. The top of the screen points to Black, the bottom points to White.",
+      "Each player can then read their half of the screen.",
+    ],
     picture: true,
   },
   {
     title: "Draw",
-    lines: ["Press this button when your opponent captures your piece."],
+    lines: [
+      "Press this button when your opponent captures one of your pieces.",
+      "The app then shows the new card to you.",
+      "Black has the same button on the other half.",
+    ],
     target: "draw",
   },
   {
     title: "Hand",
     lines: [
-      "Your kept cards are here. Tap a card to read it.",
-      "Keep until used: tap “Use” when you use it.",
-      "Keep this card: the card stays. Only a card effect removes it.",
+      "The cards that you keep go here. Tap a card to read it again.",
+      "Keep until used: use the card one time. Then tap the card and “Use”.",
+      "Keep this card: the effect continues while you have the card. Only a card effect removes it.",
     ],
     target: "hand",
   },
   {
     title: "Reminders",
-    lines: ["A card with a timed effect stays here.", "When the effect stops, tap the card, then “Done”."],
+    lines: [
+      "Some cards have an effect for a time, for example for your next turn.",
+      "These cards stay here, so that you do not forget them.",
+      "When the effect stops, tap the card, then “Done”.",
+    ],
     target: "reminder",
   },
   {
     title: "Discard pile",
-    lines: ["A card without keep text goes here after “Done”.", "Tap here to see all used cards."],
+    lines: [
+      "A card without keep text has an effect only one time.",
+      "After you tap “Done”, the card goes here.",
+      "Tap here to see all cards that the players used.",
+    ],
     target: "last",
   },
   {
     title: "Middle strip",
-    lines: ["Deck: the cards that are left.", "Undo: go back one step.", "?: the rules.", "⋯: the menu and this tutorial."],
+    lines: [
+      "Deck: the number of cards that are left.",
+      "Undo: go back one step, for example after a wrong tap.",
+      "?: the rules.",
+      "⋯: the menu, with “New game” and this tutorial.",
+    ],
     target: "strip",
   },
 ];
