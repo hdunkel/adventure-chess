@@ -1,0 +1,16 @@
+:root {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #1a1a1a;
+  background: #2a2218;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}

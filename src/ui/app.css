@@ -1,0 +1,443 @@
+/* Adventure Chess V0.5: main screen and card view. */
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #3b2f1e;
+  --parchment: #f4ecd8;
+  --parchment-dark: #d3c39f;
+  --card: #fffaf0;
+  --card-edge: #8a7550;
+  --wood: #3b2f1e;
+  --wood-text: #f4ecd8;
+  --night: #2a2218;
+  --touch: 44px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.turned {
+  transform: rotate(180deg);
+}
+
+/* The app column: phone width, centered on a desktop screen. */
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: 430px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--parchment);
+  color: var(--ink);
+}
+
+/* A half of one player. */
+.half {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 16px;
+}
+
+.half-white {
+  background: var(--parchment);
+}
+
+.half-black {
+  background: var(--parchment-dark);
+}
+
+.half-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  /* On a short screen, the rows scroll. They do not push the draw button out. */
+  overflow-y: auto;
+}
+
+.half-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--ink-soft);
+}
+
+.hand-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+
+.draw-button {
+  min-height: 52px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: var(--wood);
+  color: #fff;
+  font-size: 17px;
+}
+
+/* Cards. All text on a card is dark. All silhouettes are black. */
+.card {
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--card-edge);
+}
+
+.card-mini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 64px;
+  height: 88px;
+  padding: 4px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.card-mini .card-icon {
+  width: 32px;
+  height: 32px;
+  flex: none;
+}
+
+.card-mini .card-name {
+  font-size: 10px;
+  line-height: 1.2;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.mini-button {
+  position: relative;
+  flex: none;
+  padding: 0;
+  border: none;
+  background: none;
+  min-width: var(--touch);
+  min-height: var(--touch);
+}
+
+.reminder-marker {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 4px;
+  border: 1px solid var(--card-edge);
+  border-radius: 4px;
+  background: #f2d98c;
+  color: var(--ink);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.mini-reminder .card-mini {
+  border-style: dashed;
+  padding-top: 12px;
+}
+
+.card-big {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  border-width: 2px;
+  border-radius: 12px;
+}
+
+.card-big .card-name {
+  margin: 0 0 6px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.card-big .card-icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 4px auto;
+  flex: none;
+}
+
+.card-keep {
+  margin-bottom: 8px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.card-text {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  white-space: pre-line;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* The middle strip. */
+.strip {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 52px;
+  padding: 4px 8px;
+  background: var(--wood);
+  color: var(--wood-text);
+  font-size: 13px;
+}
+
+.strip-deck {
+  flex: none;
+  padding: 0 4px;
+}
+
+.strip-button {
+  flex: none;
+  min-width: var(--touch);
+  min-height: var(--touch);
+  padding: 0 8px;
+  border: 1px solid var(--wood-text);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--wood-text);
+}
+
+.strip-last {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+/* The card view. It covers the app column. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay-white {
+  background: var(--parchment);
+  color: var(--ink);
+}
+
+.overlay-black {
+  background: var(--night);
+  color: var(--wood-text);
+}
+
+.overlay-own {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+}
+
+.overlay-label {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.overlay-note {
+  margin: 0;
+  font-size: 14px;
+}
+
+.big-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: 560px;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  gap: 10px;
+}
+
+.card-actions,
+.other-buttons {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.other-buttons {
+  flex-direction: row;
+}
+
+.action-button {
+  flex: 1 1 0;
+  min-height: 48px;
+  border: 1px solid var(--card-edge);
+  border-radius: 10px;
+  background: var(--wood);
+  color: #fff;
+  font-size: 16px;
+}
+
+.overlay-black .action-button {
+  background: var(--card);
+  color: var(--ink);
+}
+
+/* Undo is a second-rank button: outline only. */
+.action-button.undo-button {
+  flex: none;
+  min-height: var(--touch);
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+}
+
+.overlay-other {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  max-height: 50%;
+  overflow-y: auto;
+  padding: 16px;
+  border-bottom: 2px solid var(--card-edge);
+}
+
+.other-panel {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* The Extortion holder reads the card here. The card text scrolls. Yes and No stay visible. */
+.other-card .card-big {
+  padding: 8px 12px;
+}
+
+.other-card .card-big .card-name {
+  margin-bottom: 2px;
+  font-size: 17px;
+}
+
+.other-card .card-big .card-icon {
+  width: 40px;
+  height: 40px;
+  margin: 2px auto;
+}
+
+.other-text {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* The full screens: discard list, rules and menu. They face the bottom seat. */
+.screen {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--parchment);
+  color: var(--ink);
+}
+
+.screen-title {
+  flex: none;
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.screen-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.screen-heading {
+  margin: 8px 0 0;
+  font-size: 15px;
+}
+
+.screen-text,
+.screen-list {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.screen-list {
+  padding-left: 20px;
+}
+
+.discard-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.discard-row {
+  width: 100%;
+  min-height: var(--touch);
+  padding: 0 12px;
+  border: 1px solid var(--card-edge);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--ink);
+  text-align: left;
+}
+
+.action-button.screen-close,
+.action-button.menu-button {
+  flex: none;
+}

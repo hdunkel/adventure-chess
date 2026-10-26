@@ -1,0 +1,420 @@
+[
+  {
+    "id": "a-heros-legacy",
+    "name": "A Hero's Legacy",
+    "effect": "Choose one of your Rooks. This Rook moves like a Queen for the rest of the match. Every time this Rook captures a piece (of any color), your opponent may exchange the position of 2 of their pieces on the board.",
+    "keep": "immediate",
+    "piece": "rook"
+  },
+  {
+    "id": "agamemnon",
+    "name": "Agamemnon",
+    "effect": "For your next turn, you may control your opponent's Queen. That Queen cannot deliver Check and may only capture Pawns (of both colors). Adventure Cards are drawn for any captures.",
+    "keep": "immediate",
+    "piece": "queen",
+    "reminder": true
+  },
+  {
+    "id": "ambush",
+    "name": "Ambush",
+    "effect": "If 2 of your pieces are located either directly to the left and right, or behind and in front of an opponent's piece (but not diagonally adjacent), that piece is removed from the board. If this situation is present more than once, you choose the piece that is removed. This process must not result in a Check. No Adventure Card is drawn.",
+    "keep": "immediate",
+    "piece": "none"
+  },
+  {
+    "id": "anointments",
+    "name": "Anointments",
+    "effect": "If 3 or less Pawns of your color remain on the board, you may replace one of them with a Bishop that has been captured before, thus removing it from the board. If no such Bishop is available, this card is void.",
+    "keep": "immediate",
+    "piece": "bishop"
+  },
+  {
+    "id": "beggar-in-disguise",
+    "name": "Beggar In Disguise",
+    "effect": "Choose one of your Pawns that has not been moved yet. You may exchange that Pawn for a Knight or a Bishop (thus removing it from the board), if one of the latter has been captured before.",
+    "keep": "immediate",
+    "piece": "pawn"
+  },
+  {
+    "id": "black-magic",
+    "name": "Black Magic",
+    "effect": "Turn the board around. For the rest of the game, both players play the other color.\nIt is your opponent's turn again, now playing the other color. Adventure Cards remain with their original players.",
+    "keep": "immediate",
+    "piece": "none",
+    "flow": "swapColors"
+  },
+  {
+    "id": "boycott",
+    "name": "Boycott",
+    "effect": "Keep until used. Once, you may reverse your opponent's move, except for Checking situations. They can no longer make that same move and have to choose a different one. This card cannot be used to reverse a move that was forced by an Adventure Card - even if other moves are also possible.",
+    "keep": "untilUsed",
+    "piece": "none"
+  },
+  {
+    "id": "broken-chains",
+    "name": "Broken Chains",
+    "effect": "Keep this card. As long as you own this card, you may capture pieces of your own color. Adventure Cards are also drawn for those captures.",
+    "keep": "permanent",
+    "piece": "none"
+  },
+  {
+    "id": "brothers-in-arms",
+    "name": "Brothers In Arms",
+    "effect": "Place one of your Pawns, that has been captured before, in your back rank. If no such Pawn is available, this card is void.",
+    "keep": "immediate",
+    "piece": "pawn"
+  },
+  {
+    "id": "burglar",
+    "name": "Burglar",
+    "effect": "Your opponent hands you one of their Adventure Cards that they keep either permanently or until use. You may use the card as if you had drawn it. If no such card is available, this card is void.",
+    "keep": "immediate",
+    "piece": "none",
+    "flow": "stealKept"
+  },
+  {
+    "id": "burn-the-dead",
+    "name": "Burn The Dead",
+    "effect": "Both players banish (up to) 4 of their previously captured pieces. Those pieces do not return to the board under any circumstance.",
+    "keep": "immediate",
+    "piece": "none"
+  },
+  {
+    "id": "burn-them-at-the-stake",
+    "name": "Burn Them At The Stake",
+    "effect": "For your next turn, you have to move a Bishop of your color., except in a Checking situation. For this purpose, it may jump over your own pieces, yet it is only allowed to move up to 3 squares.",
+    "keep": "immediate",
+    "piece": "bishop",
+    "reminder": true
+  },
+  {
+    "id": "cavalry-charge",
+    "name": "Cavalry Charge",
+    "effect": "Keep this card until used. You may move one your Knights like a Rook once. Afterwards, this card is void.",
+    "keep": "untilUsed",
+    "piece": "knight"
+  },
+  {
+    "id": "circes-curse",
+    "name": "Circe's Curse",
+    "effect": "Both players choose a Knight on the board. The chosen Knights are removed from the board and replaced by previously captured Pawns of the same color. If no such Pawn is available, the Knight remains on the board.",
+    "keep": "immediate",
+    "piece": "knight"
+  },
+  {
+    "id": "conspiracy",
+    "name": "Conspiracy",
+    "effect": "Choose one of your opponent's Pawns that has been moved before. This Pawn is exchanged for a Pawn of your color that has been captured before. If no such Pawn is available, this card is void.",
+    "keep": "immediate",
+    "piece": "pawn"
+  },
+  {
+    "id": "crossbow",
+    "name": "Crossbow",
+    "effect": "Keep until used. Once, a Bishop of your color may remove a threatened piece of the other color from the board, without moving to its position. No Adventure Card is drawn. After use, this card is void and your turn is over.",
+    "keep": "untilUsed",
+    "piece": "bishop"
+  },
+  {
+    "id": "devils-bargain",
+    "name": "Devil's Bargain",
+    "effect": "Choose 2 pieces of the same numerical value on the board. Your opponent has to agree to your choice. If they do, the selected pieces are removed from the board. Otherwise, this card is void.",
+    "keep": "immediate",
+    "piece": "none"
+  },
+  {
+    "id": "earthquake",
+    "name": "Earthquake",
+    "effect": "All pieces on the board are moved to a vacant, adjacent square. Therefore, both players take turns moving their pieces. They go from their back rank to their front rank, from lowest to highest piece value (The King counts as 0). No captures result from this process. If a piece cannot be moved, it stays in place.",
+    "keep": "immediate",
+    "piece": "none"
+  },
+  {
+    "id": "exchange-of-the-guards",
+    "name": "Exchange Of The Guards",
+    "effect": "Exchange the positions of 2 Rooks of the same color. If there is one or less Rooks of each color on the board, this card is void.",
+    "keep": "immediate",
+    "piece": "rook"
+  },
+  {
+    "id": "extortion",
+    "name": "Extortion",
+    "effect": "Keep this card until used. Each time your opponent draws an Adventure Card, you may take it from them. Continue the game as if you had drawn it. This decision can be made after the drawn card is read out. Once you make use of this effect, this card is void.",
+    "keep": "untilUsed",
+    "piece": "none",
+    "flow": "extortion"
+  },
+  {
+    "id": "eye-of-the-cyclops",
+    "name": "Eye Of The Cyclops",
+    "effect": "Choose a Rook of the opposite color. For the next turn, this Rook cannot capture a piece, except to escape a Checking situation.",
+    "keep": "immediate",
+    "piece": "rook",
+    "reminder": true
+  },
+  {
+    "id": "famine",
+    "name": "Famine",
+    "effect": "Both players choose 4 Pawns of their own color. If less than 4 Pawns remain for one or both colors, all remaining Pawns of the corresponding color(s) are chosen. The chosen pieces are removed from the board.",
+    "keep": "immediate",
+    "piece": "pawn"
+  },
+  {
+    "id": "guillotine",
+    "name": "Guillotine",
+    "effect": "Your King is moved to a vacant square directly in front of a Pawn of your color (towards your opponent's side), but not into a Checking situation. If no such square is available, this card is void.",
+    "keep": "immediate",
+    "piece": "king"
+  },
+  {
+    "id": "haunted-prophet",
+    "name": "Haunted Prophet",
+    "effect": "Choose one of your Pawns. That Pawn now moves like a King. It is removed from the board upon its first capture and cannot be exchanged for a different piece upon reaching the last rank. You can only select a Pawn that does not deliver Check if selected. If none of your Pawns remains on the board, this card is void.",
+    "keep": "immediate",
+    "piece": "pawn"
+  },
+  {
+    "id": "heavy-is-the-crown",
+    "name": "Heavy Is The Crown",
+    "effect": "Your next move must be made with your King (but not to a Checking position). If no move is possible, this card is void.",
+    "keep": "immediate",
+    "piece": "king",
+    "reminder": true
+  },
+  {
+    "id": "helen-of-troy",
+    "name": "Helen Of Troy",
+    "effect": "You cannot, under any circumstance, move your Queen until you capture a piece.",
+    "keep": "immediate",
+    "piece": "queen",
+    "reminder": true
+  },
+  {
+    "id": "hidden-blade",
+    "name": "Hidden Blade",
+    "effect": "Choose one of your Bishops. If an opponent's piece is on the square directly in front of it (directed towards their King's starting position), that piece is removed from the board. No Adventure Cards is drawn.",
+    "keep": "immediate",
+    "piece": "bishop"
+  },
+  {
+    "id": "hostage-situation",
+    "name": "Hostage Situation",
+    "effect": "Choose 2 pieces on the board that are directly diagonally adjacent. Switch the positions of both pieces, but not into a Checking situation. If no such move is possible, this card is void.",
+    "keep": "immediate",
+    "piece": "none"
+  },
+  {
+    "id": "human-sacrifice",
+    "name": "Human Sacrifice",
+    "effect": "Choose one of the Pawns of the other player's color that has not been moved yet. That Pawn is removed from the board. If there is no suitable Pawn, choose one Pawn of your color that is removed and banished. If no Pawns remain on the board, this card is void.",
+    "keep": "immediate",
+    "piece": "pawn"
+  },
+  {
+    "id": "murder-in-the-courtyard",
+    "name": "Murder In The Courtyard",
+    "effect": "You have to capture a piece during your next turn. It may be of your own color, for this purpose. An Adventure Card is drawn for the capture. If you cannot capture a piece, banish one of your captured pieces. It does not return to the board under any circumstance.",
+    "keep": "immediate",
+    "piece": "none",
+    "reminder": true
+  },
+  {
+    "id": "necromancy",
+    "name": "Necromancy",
+    "effect": "All captured pieces of both colors return to their starting positions. If one of those squares is occupied, the corresponding piece does not return.",
+    "keep": "immediate",
+    "piece": "none"
+  },
+  {
+    "id": "nobody-is-left-behind",
+    "name": "Nobody Is Left Behind",
+    "effect": "Using this card is optional. Choose previously captured pieces with a (combined) numerical value of 7. Those pieces return to their starting positions. If a starting position is occupied, the corresponding piece cannot be chosen. Skip your next turn.",
+    "keep": "immediate",
+    "piece": "none",
+    "reminder": true
+  },
+  {
+    "id": "open-the-stables",
+    "name": "Open The Stables",
+    "effect": "Your next turn must be made with a Knight. If no Knight of your color is left on the board, this card is void.",
+    "keep": "immediate",
+    "piece": "knight",
+    "reminder": true
+  },
+  {
+    "id": "penelope",
+    "name": "Penelope",
+    "effect": "If your Queen has not been moved yet: Your next move must be made with your Queen. You gain an additional turn in which a Bishop must be moved. If there is more than one Queen of your color on the board, this card is void.",
+    "keep": "immediate",
+    "piece": "queen",
+    "reminder": true
+  },
+  {
+    "id": "phoenix",
+    "name": "Phoenix",
+    "effect": "Keep this card until used. The next time a Bishop of your color is captured, mark the corresponding square. As soon as a Pawn of your color touches that square, it is exchanged for a previously captured Bishop of your color. If no such Bishop is available, the marking is removed and the Pawn remains on the board.",
+    "keep": "untilUsed",
+    "piece": "bishop"
+  },
+  {
+    "id": "pitchfork",
+    "name": "Pitchfork",
+    "effect": "Keep this card until used. Once, one of your Pawns may move backwards and capture (diagonally) backwards. The King cannot be put in Check this way.",
+    "keep": "untilUsed",
+    "piece": "pawn"
+  },
+  {
+    "id": "poisoned-wine",
+    "name": "Poisoned Wine",
+    "effect": "Both sides count the numerical value of their remaining pieces. The player with the higher value removes either 2 Pawns or a Bishop of their color from the board. In case of a draw, both players remove a Pawn of their color from the board.",
+    "keep": "immediate",
+    "piece": "none"
+  },
+  {
+    "id": "quarrel-on-the-market",
+    "name": "Quarrel On The Market",
+    "effect": "All pieces, except for both Kings, that are located on the 4 central squares of the board are removed from the board and banished. They do not return under any circumstance.",
+    "keep": "immediate",
+    "piece": "none"
+  },
+  {
+    "id": "queens-gambit",
+    "name": "Queen's Gambit",
+    "effect": "If all Queens on the board have been moved before this card is drawn: Swap the positions of two Queens on the board.",
+    "keep": "immediate",
+    "piece": "queen"
+  },
+  {
+    "id": "rapunzel",
+    "name": "Rapunzel",
+    "effect": "If both Rooks of your color are on the board and have been moved, you may switch the positions of a Rook and a Pawn of your color.",
+    "keep": "immediate",
+    "piece": "rook"
+  },
+  {
+    "id": "red-herring",
+    "name": "Red Herring",
+    "effect": "Your opponent draws an Adventure Card.",
+    "keep": "immediate",
+    "piece": "none",
+    "flow": "opponentDraws"
+  },
+  {
+    "id": "resurrection",
+    "name": "Resurrection",
+    "effect": "Keep this card until used. If one of your Pawns is changed into a different piece by reaching the front rank, you may return that Pawn back to its original position. If that square is occupied, this card is void.",
+    "keep": "untilUsed",
+    "piece": "pawn"
+  },
+  {
+    "id": "royal-banquet",
+    "name": "Royal Banquet",
+    "effect": "During your next turn, neither your King nor your Queen can be moved, except to escape a Checking situation.",
+    "keep": "immediate",
+    "piece": "king",
+    "reminder": true
+  },
+  {
+    "id": "royal-decree",
+    "name": "Royal Decree",
+    "effect": "Choose one of the following (possible) options. Either: Remove one of your Pawns from the board and draw an Adventure Card.\nOr: Both yours and your opponent's turn must be made with the highest-ranking figure of the corresponding color.",
+    "keep": "immediate",
+    "piece": "king",
+    "flow": "royalDecree"
+  },
+  {
+    "id": "royal-guard",
+    "name": "Royal Guard",
+    "effect": "Keep until used. A Rook of your color may move like a Knight once. This card is void afterwards.",
+    "keep": "untilUsed",
+    "piece": "rook"
+  },
+  {
+    "id": "scylla",
+    "name": "Scylla",
+    "effect": "Each player chooses pieces of the other color with a (combined) numerical value of exactly 3. The selected pieces are removed from the board. If this is not possible for one or both sides, the respective side does not remove any pieces.",
+    "keep": "immediate",
+    "piece": "none"
+  },
+  {
+    "id": "secret-passage",
+    "name": "Secret Passage",
+    "effect": "For your next turn, you may advance a Pawn of your color, that has not been moved yet, exactly 3 squares. It may jump over other pieces for this move.",
+    "keep": "immediate",
+    "piece": "pawn",
+    "reminder": true
+  },
+  {
+    "id": "siege",
+    "name": "Siege",
+    "effect": "For your next turn, you cannot move a Rook under any circumstance.",
+    "keep": "immediate",
+    "piece": "rook",
+    "reminder": true
+  },
+  {
+    "id": "siege-tower",
+    "name": "Siege Tower",
+    "effect": "Keep this card until used. Choose one of your Pawns. Once, this Pawn may jump over a piece when moved, effectively moving 2 squares forward. It cannot capture any pieces this way. This card cannot be combined with other Adventure Cards.",
+    "keep": "untilUsed",
+    "piece": "pawn"
+  },
+  {
+    "id": "swords-to-plows",
+    "name": "Swords To Plows",
+    "effect": "For your next turn, you cannot capture a piece, except to escape a Checking situation.",
+    "keep": "immediate",
+    "piece": "none",
+    "reminder": true
+  },
+  {
+    "id": "tactical-retreat",
+    "name": "Tactical Retreat",
+    "effect": "The Knight of your opponent's color that is closest to your King immediately makes one move towards the King of the opposite color. No captures occur through this move. If this applies to more than one Knight, your opponent chooses which one is moved. If no such move is possible, this card is void.",
+    "keep": "immediate",
+    "piece": "knight"
+  },
+  {
+    "id": "the-crusades",
+    "name": "The Crusades",
+    "effect": "Your opponent chooses one Knight of your color that threatens at least one of their pieces. All pieces of the other color, that are threatened by that Knight, are removed from the board. Adventure Cards are not drawn.",
+    "keep": "immediate",
+    "piece": "knight"
+  },
+  {
+    "id": "the-mad-king",
+    "name": "The Mad King",
+    "effect": "Choose one of the pieces on the board that is on a square directly adjacent to your King. The chosen piece is removed from the board and banished. It does not return under any circumstance.",
+    "keep": "immediate",
+    "piece": "king"
+  },
+  {
+    "id": "the-queens-court",
+    "name": "The Queen's Court",
+    "effect": "Keep this card. Choose a Queen and a Knight of the same color. This Queen also moves like a Knight from now on. The Knight is removed from the board. If the Queen is captured by a piece of the other color, she is banished. She does not return to the board under any circumstance.",
+    "keep": "permanent",
+    "piece": "queen"
+  },
+  {
+    "id": "toll",
+    "name": "Toll",
+    "effect": "Both players discard all Adventure Cards that are permanently active or kept until use.",
+    "keep": "immediate",
+    "piece": "none",
+    "flow": "discardAllHands"
+  },
+  {
+    "id": "treason",
+    "name": "Treason",
+    "effect": "If this card is drawn while a King is in Check: All pieces delivering Check are removed from the board. Afterwards, the King may be moved freely on the board, but not into a Checking situation. If no King is in Check, this card is void.",
+    "keep": "immediate",
+    "piece": "king"
+  },
+  {
+    "id": "trojan-horse",
+    "name": "Trojan Horse",
+    "effect": "If one of your Pawns has reached the fifth rank or beyond, you may exchange it for a Knight that has been captured before, thus removing it from the board.. If no such Knight is available, this card is void.",
+    "keep": "immediate",
+    "piece": "knight"
+  }
+]
