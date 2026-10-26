@@ -1,11 +1,13 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import App from "./App";
+import { TUTORIAL_KEY } from "./ui/tutorial";
 
 const rng = () => 0.5;
 const cardButton = /^(Done|To hand|Remind)$/;
 
 beforeEach(() => {
   localStorage.clear();
+  localStorage.setItem(TUTORIAL_KEY, "seen");
 });
 
 test("shows both draw buttons and the deck counter", () => {

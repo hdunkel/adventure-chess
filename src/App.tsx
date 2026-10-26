@@ -16,6 +16,8 @@ import { colorName } from "./ui/labels";
 import { Menu } from "./ui/Menu";
 import { MiddleStrip } from "./ui/MiddleStrip";
 import { RulesScreen } from "./ui/RulesScreen";
+import { Tutorial, TutorialAsk } from "./ui/TutorialPanel";
+import { markTutorialSeen, tutorialSeen, tutorialSteps } from "./ui/tutorial";
 
 interface OverlayModel {
   cardId: string;
@@ -142,7 +144,16 @@ function App({ rng = Math.random }: { rng?: () => number }) {
   const lastEntry = g.discard.at(-1);
   const [view, setView] = useState<View | null>(null);
   const close = () => setView(null);
-  const overlay = overlayFor(g, send);
+  /** "ask": the question on the first visit. A number: the index of the open tutorial step. */
+  const [tour, setTour] = useState<"ask" | number | null>(() => (tutorialSeen() ? null : "ask"));
+  const touring = tour !== null;
+  const tourStep = typeof tour === "number" ? tutorialSteps[tour] : undefined;
+  const answer = (show: boolean) => {
+    markTutorialSeen();
+    setTour(show ? 0 : null);
+  };
+  // The tutorial hides the card view while it is open. The game state does not change.
+  const overlay = touring ? null : overlayFor(g, send);
   const handOverlay =
     overlay === null && view !== null && (view.kind === "hand" || view.kind === "reminder")
       ? handOverlayFor(g, view, send, close)
@@ -158,6 +169,8 @@ function App({ rng = Math.random }: { rng?: () => number }) {
       deckEmpty={deckEmpty}
       onDraw={() => send({ type: "draw", seat })}
       onOpen={(cardId, kind) => setView({ kind, seat, cardId })}
+      flash={seat === "bottom" ? tourStep?.target : undefined}
+      inert={touring}
     />
   );
 
@@ -172,6 +185,8 @@ function App({ rng = Math.random }: { rng?: () => number }) {
         onLast={() => setView({ kind: "discard" })}
         onRules={() => setView({ kind: "rules" })}
         onMenu={() => setView({ kind: "menu" })}
+        flash={tourStep?.target}
+        inert={touring}
       />
       {half("bottom")}
       {overlay && (
@@ -220,7 +235,21 @@ function App({ rng = Math.random }: { rng?: () => number }) {
             send({ type: "newGame" });
             close();
           }}
+          onTutorial={() => {
+            close();
+            setTour(0);
+          }}
           onClose={close}
+        />
+      )}
+      {tour === "ask" && <TutorialAsk onShow={() => answer(true)} onSkip={() => answer(false)} />}
+      {tourStep && typeof tour === "number" && (
+        <Tutorial
+          step={tourStep}
+          index={tour}
+          count={tutorialSteps.length}
+          onNext={() => setTour(tour + 1)}
+          onClose={() => setTour(null)}
         />
       )}
     </div>
