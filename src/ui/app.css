@@ -722,3 +722,13 @@ button:disabled {
   width: 22px;
   height: 22px;
 }
+
+/* In the footer, the close button is second rank (outline only), as Undo in the card view. */
+.screen-footer .action-button.screen-close {
+  background: transparent;
+  color: inherit;
+}
+
+.feedback-group legend {
+  padding: 0;
+}
