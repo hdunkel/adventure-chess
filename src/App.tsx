@@ -10,6 +10,8 @@ import { CardFace } from "./ui/CardFace";
 import { CardOverlay } from "./ui/CardOverlay";
 import type { OverlayAction } from "./ui/CardOverlay";
 import { DiscardList } from "./ui/DiscardList";
+import type { FeedbackStart } from "./ui/feedback";
+import { FeedbackForm } from "./ui/FeedbackForm";
 import { Half } from "./ui/Half";
 import type { HandKind } from "./ui/Half";
 import { colorName } from "./ui/labels";
@@ -144,6 +146,12 @@ function App({ rng = Math.random }: { rng?: () => number }) {
   const lastEntry = g.discard.at(-1);
   const [view, setView] = useState<View | null>(null);
   const close = () => setView(null);
+  /**
+   * The open feedback form, or null. It is on top of the view and the drawn card. These stay as they
+   * are, so the app goes back to them when the form closes.
+   */
+  const [feedback, setFeedback] = useState<FeedbackStart | null>(null);
+  const feedbackFor = (cardId: string) => () => setFeedback({ type: "card", cardId });
   /** "ask": the question on the first visit. A number: the index of the open tutorial step. */
   const [tour, setTour] = useState<"ask" | number | null>(() => (tutorialSeen() ? null : "ask"));
   const touring = tour !== null;
@@ -200,6 +208,7 @@ function App({ rng = Math.random }: { rng?: () => number }) {
           note={overlay.note}
           canUndo={history.previous !== null}
           onUndo={() => send({ type: "undo" })}
+          onFeedback={feedbackFor(overlay.cardId)}
         />
       )}
       {handOverlay && (
@@ -209,6 +218,7 @@ function App({ rng = Math.random }: { rng?: () => number }) {
           color={g.colors[handOverlay.seat]}
           label={handOverlay.label}
           actions={handOverlay.actions}
+          onFeedback={feedbackFor(handOverlay.cardId)}
         />
       )}
       {overlay === null && view?.kind === "discard" && (
@@ -226,9 +236,12 @@ function App({ rng = Math.random }: { rng?: () => number }) {
           color={discardEntry.color}
           label={`${colorName(discardEntry.color)} drew`}
           actions={[{ label: "Close", onClick: () => setView({ kind: "discard" }) }]}
+          onFeedback={feedbackFor(discardEntry.cardId)}
         />
       )}
-      {overlay === null && view?.kind === "rules" && <RulesScreen onClose={close} />}
+      {overlay === null && view?.kind === "rules" && (
+        <RulesScreen onClose={close} onFeedback={() => setFeedback({ type: "rules" })} />
+      )}
       {overlay === null && view?.kind === "menu" && (
         <Menu
           onNewGame={() => {
@@ -239,8 +252,14 @@ function App({ rng = Math.random }: { rng?: () => number }) {
             close();
             setTour(0);
           }}
+          onFeedback={() => setFeedback({ type: null })}
           onClose={close}
         />
+      )}
+      {feedback && (
+        <div className="feedback-layer">
+          <FeedbackForm start={feedback} onDone={() => setFeedback(null)} />
+        </div>
       )}
       {tour === "ask" && <TutorialAsk onShow={() => answer(true)} onSkip={() => answer(false)} />}
       {tourStep && typeof tour === "number" && (

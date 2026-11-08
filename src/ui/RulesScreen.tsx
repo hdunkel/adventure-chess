@@ -1,9 +1,14 @@
 import { Screen } from "./Screen";
 
 /** The short rules: the draw rule, the three card types, and the credit for the silhouettes. */
-export function RulesScreen({ onClose }: { onClose: () => void }) {
+export function RulesScreen({ onClose, onFeedback }: { onClose: () => void; onFeedback: () => void }) {
+  const feedback = (
+    <button type="button" className="action-button" onClick={onFeedback}>
+      Feedback
+    </button>
+  );
   return (
-    <Screen title="Rules" onClose={onClose}>
+    <Screen title="Rules" onClose={onClose} footer={feedback}>
       <h3 className="screen-heading">Draw rule</h3>
       <p className="screen-text">
         After the first capture of a piece that is not a pawn, each capture causes a draw. The player
