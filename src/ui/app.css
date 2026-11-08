@@ -264,6 +264,7 @@ button:disabled {
 }
 
 .overlay-own {
+  position: relative;
   flex: 1 1 0;
   min-height: 0;
   display: flex;
@@ -595,4 +596,129 @@ button:disabled {
 
 .tour-phone-white {
   fill: var(--parchment);
+}
+
+/* The feedback form. It covers the card view and the other screens. The tutorial stays above it. */
+.feedback-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+}
+
+.screen-footer {
+  flex: none;
+  display: flex;
+  gap: 8px;
+}
+
+.screen-footer .action-button.screen-close {
+  flex: 1 1 0;
+}
+
+.feedback-group {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.feedback-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.feedback-choice {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--touch);
+  padding: 0 12px;
+  border: 1px solid var(--card-edge);
+  border-radius: 10px;
+  background: var(--card);
+  font-size: 15px;
+}
+
+.feedback-rating {
+  min-height: var(--touch);
+  padding: 0 12px;
+  border: 1px solid var(--card-edge);
+  border-radius: 10px;
+  background: var(--card);
+  font-size: 15px;
+}
+
+.feedback-rating[aria-pressed="true"] {
+  background: var(--wood);
+  color: var(--wood-text);
+}
+
+.feedback-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feedback-field select,
+.feedback-field textarea,
+.feedback-field input {
+  min-height: var(--touch);
+  padding: 8px;
+  border: 1px solid var(--card-edge);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+}
+
+.feedback-field textarea {
+  resize: vertical;
+}
+
+.feedback-honey {
+  display: none;
+}
+
+.feedback-error {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.action-button.feedback-mail {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.feedback-thanks {
+  margin: auto 0;
+  font-size: 22px;
+  text-align: center;
+}
+
+/* The feedback icon in a corner of the card view. It is small, so it does not compete with the game buttons. */
+.feedback-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: var(--touch);
+  height: var(--touch);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0.7;
+}
+
+.feedback-icon svg {
+  width: 22px;
+  height: 22px;
 }
