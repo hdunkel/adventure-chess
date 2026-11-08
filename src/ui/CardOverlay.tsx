@@ -24,11 +24,13 @@ interface CardOverlayProps {
   /** If given, the card view shows "Undo" next to the buttons. */
   onUndo?: () => void;
   canUndo?: boolean;
+  /** If given, a small icon in a corner opens the feedback form for this card. */
+  onFeedback?: () => void;
 }
 
 /** The big card. It covers the screen. The buttons stay below the text area. */
 export function CardOverlay(props: CardOverlayProps) {
-  const { card, seat, color, label, actions, other, note, onUndo, canUndo = false } = props;
+  const { card, seat, color, label, actions, other, note, onUndo, canUndo = false, onFeedback } = props;
   const turned = seat === "top" ? " turned" : "";
   const otherColor: Color = color === "white" ? "black" : "white";
   return (
@@ -40,6 +42,25 @@ export function CardOverlay(props: CardOverlayProps) {
     >
       {other && <div className={`overlay-other overlay-${otherColor} turned`}>{other}</div>}
       <div className="overlay-own">
+        {onFeedback && (
+          <button
+            type="button"
+            className="feedback-icon"
+            aria-label="Feedback about this card"
+            title="Feedback about this card"
+            onClick={onFeedback}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M4 5h16v11H9l-5 4z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        )}
         <div className="overlay-label">{label}</div>
         {note && <p className="overlay-note">{note}</p>}
         <div className="big-wrap">

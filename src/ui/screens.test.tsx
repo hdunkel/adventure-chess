@@ -87,7 +87,10 @@ test("discard list shows newest first with the color", () => {
   fireEvent.click(rows[1]);
   const view = screen.getByRole("dialog");
   expect(within(view).getByText("Siege")).toBeInTheDocument();
-  expect(within(view).getAllByRole("button").map((b) => b.textContent)).toEqual(["Close"]);
+  expect(within(view).getAllByRole("button").map((b) => b.getAttribute("aria-label") ?? b.textContent)).toEqual([
+    "Feedback about this card",
+    "Close",
+  ]);
   fireEvent.click(within(view).getByRole("button", { name: "Close" }));
   fireEvent.click(within(screen.getByRole("dialog", { name: "Discard pile" })).getByRole("button", { name: "Close" }));
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();

@@ -3,11 +3,12 @@ import { Screen } from "./Screen";
 interface MenuProps {
   onNewGame: () => void;
   onTutorial: () => void;
+  onFeedback: () => void;
   onClose: () => void;
 }
 
 /** The menu. "New game" asks first and calls `onNewGame` only after a yes. */
-export function Menu({ onNewGame, onTutorial, onClose }: MenuProps) {
+export function Menu({ onNewGame, onTutorial, onFeedback, onClose }: MenuProps) {
   const newGame = () => {
     if (window.confirm("Start a new game?")) onNewGame();
   };
@@ -18,6 +19,9 @@ export function Menu({ onNewGame, onTutorial, onClose }: MenuProps) {
       </button>
       <button type="button" className="action-button menu-button" onClick={onTutorial}>
         Tutorial
+      </button>
+      <button type="button" className="action-button menu-button" onClick={onFeedback}>
+        Feedback
       </button>
     </Screen>
   );
