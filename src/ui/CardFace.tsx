@@ -1,11 +1,6 @@
-import type { Card, Keep } from "../game/types";
+import type { Card } from "../game/types";
+import { keepLabels } from "./labels";
 import { PieceIcon } from "./PieceIcon";
-
-const keepLabels: Record<Keep, string | null> = {
-  immediate: null,
-  untilUsed: "Keep until used",
-  permanent: "Keep this card",
-};
 
 /**
  * The face of a card. "mini" shows the silhouette and the name (it can go in a button).
