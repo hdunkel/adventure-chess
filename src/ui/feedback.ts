@@ -1,11 +1,8 @@
 import type { Card } from "../game/types";
 import { keepLabels } from "./labels";
 
-/**
- * The FormSubmit endpoint. It must use the alias, not the plain address (spam bots read the code).
- * Replace the placeholder with the alias from Julian before the release.
- */
-export const FEEDBACK_ENDPOINT = "https://formsubmit.co/ajax/ALIAS-NOT-SET";
+/** The FormSubmit endpoint. It uses the alias, not the plain address (spam bots read the code). */
+export const FEEDBACK_ENDPOINT = "https://formsubmit.co/ajax/46d764566060f0181e5c96791027f60d";
 
 /** The inbox for the feedback. Only the mailto fallback uses it. */
 export const FEEDBACK_EMAIL = "indiecardhouse@gmail.com";
